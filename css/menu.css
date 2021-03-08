@@ -1,0 +1,640 @@
+* {
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family: 'Bitstream Vera Sans', Verdana, Tahoma, 'Sans serif';
+    font-size: 18px;
+}
+
+/*-----------------Login-------------------*/
+
+.headerLogin {
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    border-bottom: 1px solid #e5edef;
+}
+
+.imgLogo {
+    float: left;
+    width: 10%;
+}
+
+.backButton {
+    float: right;
+    width: 10%;
+    padding-top: 20px;
+}
+
+.contanerLogin {
+    width: 100%;
+    padding-top: 60px;
+    display: flex;
+}
+
+.formLogin {
+    width: 50%;
+    height: auto;
+}
+
+.containerForm {
+    width: 80%;
+    height: auto;
+    margin: 70px 70px 70px 70px;
+}
+
+.containerForm h1 {
+    text-align: center;
+    font-family: Poppins-SemiBold,Helvetica,Arial,sans-serif;
+    font-size: 28px;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    color: #1b2f62;
+}
+
+.containerInputs {
+    width: 100%;
+    text-align: center;
+}
+
+.containerInputs p {
+    font-family: Poppins-SemiBold,Helvetica,Arial,sans-serif;
+    letter-spacing: -1px;
+    padding: 10px 0px 0px 50px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.forgotPassword {
+    width: 100%;
+    margin: 20px 0px 0px 0px;
+    text-align: center;
+}
+
+.forgotPassword a {
+    text-decoration: none;
+    font-family: Poppins-SemiBold,Helvetica,Arial,sans-serif;
+    letter-spacing: -1px;
+    color: #1b2f62;
+    font-size: 15px;
+}
+
+.inputForm {
+    border: none;
+    width: 70%;
+    height: 28px;
+    transition: 1s;
+    border-bottom: 1px #1b2f62 solid;
+}
+
+.inputForm:focus {
+    border-bottom: 1px #87f299 solid;
+    width: 80%;
+}
+
+.containerButton {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.buttonLogin {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: 1px #1b2f62 solid;
+    color: #1b2f62;
+    transition: .3s;
+}
+
+.buttonLogin:hover {
+    background-color: #1b2f62;
+    color: white;
+}
+
+.infoLogin {
+    float: left;
+    width: 50%;
+    height: auto;
+    border-right: 1px #e5edef solid;
+}
+
+/*------------Opciones de menu------------*/
+.header_top {
+    width: 100%;
+    height: 20px;
+    padding: 10px 0;
+    background-color: #1b2f62;
+    position: relative;
+    z-index: 3;
+}
+
+.preferences {
+    height: 20px;
+    text-align: right;
+    margin-right: 10px;
+    float: right;
+}
+
+.preferences ul {
+    list-style: none;
+}
+
+.preferences ul li {
+    float: right;
+}
+
+.preferences ul li a {
+    display: block;
+    color: white;
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+.preferences ul li a:hover {
+    color:#7490ce;
+}
+
+/*-------------Logo Empresa----------*/
+
+.logo {
+    position: absolute;
+    width: 100px;
+    height: 55px;
+    float: left;
+}
+
+.logo img {
+    width: 80%;
+    height: 55px;
+    padding-left: 5px;
+}
+
+/*---------------Menu principal------------------*/
+.header_menu {
+    height: 30px;
+    padding-left: 95px;
+    text-align: center;
+    background-color: #3a5693;
+    position: relative;
+    z-index: 1;
+}
+
+ul.menu {
+    height: 30px;
+    list-style: none;
+    font-size: 13px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+ul.menu li {
+    float: left;
+    min-width: 135px;
+    height: 30px;
+}
+
+ul.menu li ul {
+    list-style: none;
+    display: none;
+}
+
+ul.menu li li a {
+    background-color: white;
+    box-shadow: 3px 3px 2px 2px rgb(121, 120, 120);
+    color: black;
+}
+
+ul.menu li:hover ul{
+    display: block;
+    position: absolute;
+    width: 40px;
+    transition: .3s all ease-in;
+}
+
+ul.menu li a:hover {
+    background-color: #7490ce;
+    color: white;
+}
+
+ul.menu li a {
+    color: white;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 7px 1em;
+    display: block;
+    text-align: center;
+}
+
+ul.menu li:hover {
+    background-color: #7490ce;
+}
+
+/*----------------Contenedor Principal-----------------*/
+
+.container {
+    margin: 0;
+    border: 0;
+    padding: 5px;
+}
+
+/*------------------Central.php------------------------*/
+
+/*------------------Panel de reportes------------------*/
+
+.panelGraphics {
+    margin: 10px;
+}
+
+.graphicOne{
+    width: 100%;
+    height: 300px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    float: right;
+    
+}
+
+#container1 {
+    height: 300px;
+}
+
+#container2 {
+    height: 310px;
+}
+
+/*----------Apartado de tablas de resumen---------*/
+
+.panelSummary {
+    display: flex;
+    width: 100%;
+}
+
+.summary {
+    width: 50%;
+    height: 300px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    text-align: center;
+    margin: 10px;
+    padding-bottom: 10px;
+}
+
+/*---------------------Product.php--------------------*/
+
+/*------------------Barra de busqueda-----------------*/
+
+.containerSearch{
+    display: flex;
+    justify-content: center;
+}
+
+.searchBar {
+    box-shadow: 2px 2px 1px 1px #d2d2d2;
+    margin: 12px;
+    height: auto;
+    width: 60%;
+}
+
+/*---------------Botones barra de busqueda------------*/
+
+.buttonsSearch{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.buttonsSearch > p {
+    font-size: 12px;
+    padding-top: 8px;
+}
+
+.divImg {
+    float: left;
+    width: 20%;
+    height: auto;
+    padding-right: 5px;
+}
+
+.buttonsSearch button{
+    width: auto;
+    height: 20px;
+    margin: 5px;
+    text-align: center;
+    color: #999;
+}
+
+.buttonsSearch button:hover{
+    box-shadow: 2px 2px 1px 1px #d2d2d2;
+    color: rgb(126, 125, 125);
+}
+
+/*---------------Formularios resultado busqueda-------------------*/
+
+.resultSearchForm {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    margin: 10px;
+}
+
+.optionSearch {
+    border-radius: 6px;
+    border: 1px solid #d2d2d2;
+}
+
+/*------------tabla de los productos---------------*/
+
+.containerProduct {
+    width: auto;
+}
+
+.containerFormProduct button {
+    height: 20px;
+    float: right;
+    margin-right: 35px;
+}
+
+.containerFormProduct button:hover {
+    box-shadow: 0px 1px 2px 1px #afaeae;
+}
+
+.containerTableProducts {
+    display: flex;
+    justify-content: center;
+}
+
+.tableProducts {
+    background-color: #fff;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-spacing: 0;
+    margin: 10px;
+    width: 95%;
+    font-size: 11px;
+}
+/*-------------------Botones de accion-------------------*/
+
+.buttonsAction {
+    padding-left: 35px;
+    height: 30px;
+}
+
+.buttonsAction button:hover {
+    box-shadow: 0px 1px 2px 1px #afaeae;
+}
+
+.buttonsAction > button {
+    margin: 0px 10px 10px 10px;
+}
+
+.buttonEdit {
+    background-color: #89fc70;
+    color: black;
+}
+
+.buttonDelete {
+    background-color:#fc7970 ;
+    color:black;
+}
+
+.buttonSave {
+    background-color:  #fec95c;
+    color: #8f5a0a;
+}
+
+/*---------------------Alertas------------------------------*/
+
+.alertWarning {
+    height: 45px;
+    width: 100%;
+    font-size: 15px;
+    color: rgb(90, 78, 78);
+    border: 1px solid rgb(240, 137, 137);
+    background-color: rgb(253, 153, 153);
+}
+
+.contentWarning {
+    height: 20px;
+    padding: 12px 12px 12px 12px;
+}
+
+/*----------------------Apartado de tabla productos--------------*/
+
+.tableHead {
+    background-color: #e2e1de;
+    text-align: center;
+    height: 40px;
+    color: #1b2f62;
+}
+
+.tableBody tr > td{
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    padding: 10px;
+}
+
+.tableBody tr:hover{
+    background-color: #eeedea;
+}
+
+/*---------------Apartado product.form-------------------------*/
+
+.containerFormEdit{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.containerFormEdit > form {
+    font-size: 15px;
+    padding: 20px;
+}
+
+/*----------------product_add.form.php------------------*/
+.optionsBar{
+    width: 100%;
+    height: 2em;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+}
+
+.optionsBar > a > button {
+    width: 6%;
+    height: 2em;
+    margin: 5px;
+}
+
+.containerProductAdd {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.containerProductAdd > form {
+    font-size: 15px;
+    padding: 20px;
+    width: 80%;
+    /*background-color: wheat;*/
+    display: flex;
+    justify-content: center;
+}
+
+.borderFormProductAdd {
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+}
+
+.tdFull > p {
+    text-align: center;
+    font-family: Poppins-SemiBold,Helvetica,Arial,sans-serif;
+}
+
+.tdFull > input {
+    width: 93%;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-radius: 6px;
+}
+
+.tdFull > img {
+    padding-left: 70px;
+    border-radius: 10px;
+}
+
+.tdFull > select {
+    width: 95%;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-radius: 6px;
+}
+
+.tdMedium > p {
+    text-align: center;
+    font-family: Poppins-SemiBold,Helvetica,Arial,sans-serif;
+}
+
+.tdMedium > input {
+    width: 86%;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-radius: 6px;
+}
+
+.tdMedium > select {
+    width: 86%;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-radius: 6px;
+}
+
+.tdTask {
+    text-align: center;
+}
+
+.tdTask > textarea {
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-radius: 6px;
+    width: 94%;
+    height: 9em;
+}
+
+.tdButton {
+    text-align: center;
+    padding: 10px;
+}
+
+.tdButton > button {
+    height: 2em;
+    font-size: 15px;
+}
+
+.tdButton > a > button {
+    height: 2em;
+    font-size: 15px;
+}
+
+.tdButton > button:hover {
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+}
+
+/*-----------------Apartado administration.php-------------------*/
+
+.containerOption {
+    display: flex;
+    justify-content: center;
+}
+
+.containerButtonsOptions {
+    width: 100%;
+    display: flex;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;;
+}
+
+.buttonsAdministration {
+    width: 50%;
+    height: 2em;
+    text-align: center;
+    padding: 10px;
+}  
+
+.buttonsAdministration > button {
+    width: 30%;
+    height: 2em;
+    font-size: 15px;
+}
+
+.containerFormsAdministration{
+    display: flex;
+    justify-content: center;
+}
+
+/*-------------------Footer-------------------*/
+
+.footer {
+    font-size: 9px;
+    color: #000;
+    bottom: 0;
+    background-color: #e2e1de;
+    width: 100%;
+    height: 40px;
+    position: relative;
+}
+
+.footer > table {
+    width: 100%;
+    height: 40px;
+}
+
+.version {
+    text-align: center;
+    width: 50%;
+}
+
+.version a{
+    color:#3a5693;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.copyright {
+    text-align: center;
+    width: 50%;
+}
+
+.copyright a{
+    color:#3a5693;
+    text-decoration: none;
+    font-weight: bold;
+}
