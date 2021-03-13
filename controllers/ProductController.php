@@ -17,14 +17,12 @@
             $data = $this->modelProduct->getProducts();
             require_once("../views/header.php");
             require_once("../views/product/product.php");
-            require_once("../views/footer.php");
         }
 
         public function create(){
             $data['category'] = $this->modelProduct->getCategory();
             require_once("../views/header.php");
             require_once("../views/product/product_add.php");
-            require_once("../views/footer.php");
         }
 
         public function save(){
@@ -79,13 +77,11 @@
                 $error = "No hay nada que mostrar.";
                 require_once("../views/header.php");
                 include_once("../views/product/product_edit.php");
-                require_once("../views/footer.php");
             }else{
                 $data             = $this->modelProduct->getIdProduct($_POST['idProduct']);
                 $data['category'] = $this->modelProduct->getCategory();
                 require_once("../views/header.php");
                 include_once("../views/product/product_edit.php");
-                require_once("../views/footer.php");
             }
         }
 
@@ -104,12 +100,10 @@
                     $data  = "";
                     require_once("../views/header.php");
                     include_once("../views/product/product.php");
-                    require_once("../views/footer.php");
                 }else {
                     $data = $this->modelProduct->searchByDate($_POST['searchDateOne'], $_POST['searchDateTwo']);
                     require_once("../views/header.php");
                     include_once("../views/product/product.php");
-                    require_once("../views/footer.php");
                 }
             }else if(isset($_POST['searchItem'])){
                 if(empty($_POST['itemProduct'])){
@@ -117,13 +111,11 @@
                     $data  = "";
                     require_once("../views/header.php");
                     include_once("../views/product/product.php");
-                    require_once("../views/footer.php");
                 }else {
                     $data = $this->modelProduct->searchByItem($_POST['itemProduct']);
                     $data = "";
                     require_once("../views/header.php");
                     include_once("../views/product/product.php");
-                    require_once("../views/footer.php");
                 }
             }else if(isset($_POST['searchPatron'])){
                 if(empty($_POST['patron']) && empty($_POST['valorPatron'])){
@@ -135,7 +127,6 @@
                     $data   = $this->modelProduct->searchByPatron($patron, $valor);
                     require_once("../views/header.php");
                     include_once("../views/product/product.php");
-                    require_once("../views/footer.php");
                 }
             }
         }

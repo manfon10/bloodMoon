@@ -14,7 +14,6 @@
             $data = $this->modelAdministration->getUser();
             require_once("../views/header.php");
             include_once('../views/administration/administration.php');
-            require_once("../views/footer.php");
         }   
 
         public function create() {
@@ -23,7 +22,6 @@
             $data['rol'] = $this->modelAdministration->getRol();
             require_once("../views/header.php");
             include_once('../views/administration/add_user.php');
-            require_once("../views/footer.php");
         }
 
         public function save(){

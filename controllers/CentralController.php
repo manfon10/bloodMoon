@@ -15,7 +15,6 @@
             $graph = $this->modelCentral->getSalesPerMonth();
             require_once("../views/header.php");
             include_once('../views/central/central.php');
-            require_once("../views/footer.php");
         }
 
     }
