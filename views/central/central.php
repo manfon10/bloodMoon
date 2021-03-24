@@ -81,51 +81,32 @@
 <script type="text/javascript">
     $('#container2').highcharts({
         chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
+            type: 'column'
         },
 
-        colors: [
-            '#1b2f62', 
-            '#cc3c1a'
-        ],
+        colors: ['#52be80', '#f1c40f',  '#ec7063'],
 
         title: {
             text: 'Estado por Ventas'
         },
 
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-
-        plotOptions: {
-            pei: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                }
-            }
+        xAxis: {
+            categories: [
+                'Aprovado',
+                'Pendiente',
+                'Denegado'
+            ],     
         },
     
         series: [{
-            name: 'Estado',
-                data: [
-                    <?php 
-                        foreach ($graph as $series) {
-                            echo $series['TotalVentasMes'] . ',';
-                        } 
-                    ?>
-                ],
+            name: 'Aprovado',
+                data: [4]
+        }, {
+            name: 'Pendiente',
+                data: [2]
+        }, {
+            name: 'Denegado',
+                data: [8]
         }]
     });
 </script>
