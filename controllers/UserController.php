@@ -31,8 +31,8 @@
                                     $userSession->setCurrentUser($data->userName);
 
                                     $this->userModel->setUser($data);
-                                    $_SESSION['idUser'] = $this->userModel->getId();
-                                    $_SESSION['names'] = $this->userModel->getNames();
+                                    $_SESSION['idUser']   = $this->userModel->getId();
+                                    $_SESSION['names']    = $this->userModel->getNames();
                                     $_SESSION['surnames'] = $this->userModel->getSurNames();
                                     $_SESSION['access'] = 1 ;
 
