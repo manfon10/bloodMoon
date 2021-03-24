@@ -35,13 +35,13 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="tdMedium">
                                         <input type="text" name="names" value="<?php echo $dato['nombres']; ?>">
                                     </td>
                                     <td>
                                         <input type="text" name="surnames" value="<?php echo $dato['apellidos']; ?>">
                                     </td>
-                                    <td>
+                                    <td class="tdFull">
                                         <input type="mail" name="email" value="<?php echo $dato['email']; ?>">
                                     </td>
                                 </tr>
