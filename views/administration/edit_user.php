@@ -5,61 +5,94 @@
     <?php if(isset($data) != "") { ?>
         <div class="containerFormEditUser">
             <div>
-                <form action="">
+                <form action="index.php?menu=administration&action=save" class="border_table">
                     <?php foreach($data as $dato) : ?>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th colspan="8"><h3>Edición Usuario - <?php echo $dato['nombre_usuario']; ?></h3></th>
-                                </tr>  
-                            </thead>
-                            <tbody>
-                                <tr>
-
-                                    <td colspan="1">
-                                        <?php if($dato['imagen'] != "") { ?>
-                                            <img src="../uploads/_pictureUsers/<?php echo $dato['imagen']; ?>" alt="" style="width:100px;"></td>
-                                        <?php } else { ?>
-                                            <img src="../img/img_user_default.png" alt="" style="width:190px;"></td>
-                                        <?php } ?>
-                                    </td>
-                                    <td colspan="1">
-                                        <p>Rol: <?php echo $dato['nombre_rol']; ?></p>
-                                        <p style="">Estado Usuario:
-                                        <?php if($dato['estado'] == "Activo") { ?>
-                                            <?php echo $dato['estado'] . " " ; ?><img src="../img/activo.png" style="width:15px;">
-                                                <?php } else { ?>
-                                                <?php echo $dato['estado']; ?> <img src="../img/inactivo.png" style="width:15px;">
-                                            <?php } ?></p>
-                                        <p>Ultimo acceso al sistema: <?php if($dato['ultimo_acceso'] != ""){ echo $dato['ultimo_acceso'];} else {echo "No Tiene Registro";} ?></p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tdMedium">
-                                        <input type="text" name="names" value="<?php echo $dato['nombres']; ?>">
-                                    </td>
-                                    <td>
-                                        <input type="text" name="surnames" value="<?php echo $dato['apellidos']; ?>">
-                                    </td>
-                                    <td class="tdFull">
-                                        <input type="mail" name="email" value="<?php echo $dato['email']; ?>">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select name="category">
-                                            <option value="<?php echo $dato['tipo_documento']; ?>" <?php if($dato['tipo_documento'] == $dato['tipo_documento']) { echo "selected"; } ?> >
-                                                <?php echo $dato['tipo_documento']; ?>
-                                            </option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="" value="<?php echo $dato['numero_documento']; ?>">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="border_table_info">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th colspan="7"><h3>Edición Usuario - <?php echo $dato['nombre_usuario']; ?></h3></th>
+                                    </tr>  
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border_info">
+                                            <?php if($dato['imagen'] != "") { ?>
+                                                <img src="../uploads/_pictureUsers/<?php echo $dato['imagen']; ?>" alt="" style="width:100px;">
+                                            <?php } else { ?>
+                                                <img src="../img/img_user_default.png" alt="" style="width:100px;">
+                                            <?php } ?>
+                                        </td>
+                                        <td class="border_info" style="width:85%;">
+                                            <p><strong>Rol: </strong><?php echo $dato['nombre_rol']; ?></p>
+                                            <p style=""><strong>Estado Usuario: </strong>
+                                            <?php if($dato['estado'] == "Activo") { ?>
+                                                <?php echo $dato['estado'] . " " ; ?><img src="../img/activo.png" style="width:15px;">
+                                                    <?php } else { ?>
+                                                    <?php echo $dato['estado'] . " " ; ?> <img src="../img/inactivo.png" style="width:15px;">
+                                                <?php } ?></p>
+                                            <p><strong>Ultimo acceso : </strong><?php if($dato['ultimo_acceso'] != ""){ echo $dato['ultimo_acceso'];} else {echo "No Tiene Registro";} ?></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="border_table_info">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th colspan="7"><h3>Datos Usuario</h3></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="tdUser">
+                                            <p>Nombres</p>
+                                            <input type="text" name="names" value="<?php echo $dato['nombres']; ?>">
+                                        </td>
+                                        <td class="tdUser">
+                                            <p>Apellidos</p>
+                                            <input type="text" name="surnames" value="<?php echo $dato['apellidos']; ?>">
+                                        </td>
+                                        <td class="tdUser">
+                                            <p>Correo Electronico</p>
+                                            <input type="mail" name="email" value="<?php echo $dato['email']; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdUser">
+                                            <p>Tipo de Documento</p>
+                                            <select name="category">
+                                                <option value="<?php echo $dato['tipo_documento']; ?>" <?php if($dato['tipo_documento'] == $dato['tipo_documento']) { echo "selected"; } ?> >
+                                                    <?php echo $dato['tipo_documento']; ?>
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td class="tdUser">
+                                            <p>Numero de Documento</p>
+                                            <input type="number" name="" value="<?php echo $dato['numero_documento']; ?>">
+                                        </td>
+                                        <td class="tdUser">
+                                            <p>Fecha Creación</p>
+                                            <input type="text" value="<?php echo $dato['fecha_creacion']; ?>" disabled>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tdUser">
+                                            <input type="hidden" name="image" value="<?php echo $dato['imagen']; ?>">
+                                            <input type="file" name="image" >
+                                        </td>
+                                        <td class="tdUser">
+                                            <select name="" id=""></select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> 
                     <?php endforeach;?>
+                    <div class="tdButton">
+                        <button type="submit" class="buttonSave" name="updateUser"><i class="fa fa-plus"></i> Guardar</button>
+                    </div>
                 </form>
             </div>
         </div>
