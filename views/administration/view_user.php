@@ -4,7 +4,7 @@
         <a href="index.php?menu=administration&action=create"><button class="buttonSave"><i class="fa fa-plus"></i> Agregar</button></a>
             <form action="index.php?menu=administration&action=edit" method="POST">
                 <button name="editUser" class="buttonEdit" style="float:left;"><i class="fa fa-edit"></i> Editar</button>
-                    <table id="table_users" class="tableProducts">
+                    <table id="table_users" class="tableProducts" style="width:98%;">
                         <thead class="tableHead">
                             <tr>
                                 <th></th>
@@ -27,7 +27,13 @@
                                         <td><?php echo $dato['estado']; ?></td>
                                         <td><?php echo $dato['ultimo_acceso']; ?></td>
                                         <td><?php echo $dato['nombre_rol']; ?></td>
-                                        <td><img src="../uploads/_pictureUsers/<?php echo $dato['imagen']; ?>" style="width:50px; height:50px;"></td>
+                                        <td>
+                                            <?php if($dato['imagen'] != "") { ?>
+                                                <img src="../uploads/_pictureUsers/<?php echo $dato['imagen']; ?>" alt="" style="width:50px;">
+                                            <?php } else { ?>
+                                                <img src="../img/img_user_default.png" alt="" style="width:50px;">
+                                            <?php } ?>    
+                                        </td>
                                         <td style="width:15%;">
                                             <a href="index.php?menu=administration&action=delete&idUser=<?php echo $dato['id_usuario'];?>" ><i class="fa fa-trash-alt"></i></a>
                                         </td>
