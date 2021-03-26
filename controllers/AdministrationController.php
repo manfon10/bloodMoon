@@ -11,7 +11,6 @@
             }
 
         public function index(){
-            $data = $this->modelAdministration->getUser();
             require_once("../views/header.php");
             include_once('../views/administration/administration.php');
         }   
@@ -62,8 +61,25 @@
             if(isset($_POST['addUser'])){
                 $this->modelAdministration->addUser($data);
                 header("Location: index.php?menu=administration");
-                echo '<pre>';
-                print_r($data);
+            }
+
+            if(isset($_POST['updateUser'])){
+                $data['imageUser'] = $_POST['image'];
+                $idProduct            = array("idProduct" => $_GET['idProduct']);
+                $this->modelProduct->updateProduct($data, $idProduct);
+                header("Location: index.php?menu=product");
+            } 
+        }
+
+        public function edit(){
+            if(empty($_POST['id_usuario'])){
+                $error = "No hay nada que mostrar.";
+                require_once("../views/header.php");
+                include_once("../views/administration/edit_user.php");
+            }else{
+                $data = $this->modelAdministration->getUserId($_POST['id_usuario']);
+                require_once("../views/header.php");
+                include_once("../views/administration/edit_user.php");
             }
         }
 
