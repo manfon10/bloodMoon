@@ -1,6 +1,6 @@
 <?php
 
-    require_once("../config/db.php");
+    include_once "../config/db.php";
     require_once("../core/routes.php");
     require_once("../config/global.php");
     
