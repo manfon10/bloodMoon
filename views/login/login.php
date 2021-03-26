@@ -26,7 +26,7 @@
                     <form action="?redirec=validate" method="POST">
                         <h1>Iniciar sesión</h1>
                         <?php if(isset($error)): ?>
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert_error">
                                 <i class="fa fa-exclamation-triangle"></i> <?php echo $error; ?>
                             </div>
                         <?php endif; ?>
