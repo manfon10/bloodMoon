@@ -43,7 +43,7 @@
 <script type="text/javascript">
     $('#container1').highcharts({
         chart: {
-            type: 'line',
+            type: 'column',
             zoomType: 'x'
         },
         colors: ['#1b2f62', '#cc3c1a'],
