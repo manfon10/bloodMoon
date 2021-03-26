@@ -1,5 +1,7 @@
 <?php
 
+    include_once('../config/db.php');
+
     class administrationModel {
 
         private $db;
@@ -26,6 +28,25 @@
                     echo "Revise el siguiente error " . $e->getMessage();
                 }
             return $user;
+        }
+
+        public function getUserId($idUser){
+            $user = array();
+            $sql = "SELECT id_usuario, estado_usuario.estado, nombre_usuario, numero_documento, email, ultimo_acceso, roles.nombre_rol, nombres, apellidos, imagen, ruta_imagen, fecha_creacion, tipo_documento.tipo_documento 
+                        FROM usuario
+                    INNER JOIN estado_usuario ON usuario.id_estado = estado_usuario.id_estado
+                    INNER JOIN roles ON usuario.id_rol = roles.id_rol
+                    INNER JOIN tipo_documento ON usuario.id_tipo_documento = tipo_documento.id_tipo_documento
+                        WHERE id_usuario = ?;";
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->bindParam(1, $idUser);
+                    $query->execute();
+                    $data = $query->fetchAll();
+                    return $data;
+                }catch (PDOExeption $e) {
+                    echo "Revise el siguiente error " . $e->getMessage();
+                }
         }
 
         public function addUser($data){
