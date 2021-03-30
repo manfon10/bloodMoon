@@ -106,7 +106,7 @@
                             </tr>
                         </thead>
                         <tbody class="tableBody">
-                            <?php if($data != "") : ?>
+                            <?php if($data != []) : ?>
                                 <?php foreach ($data as $dato) : ?>
                                     <tr>
                                         <td style="width:10px;"><input type="checkbox" name="idProduct" value="<?php echo $dato['id_producto']; ?>"></td>
@@ -140,3 +140,4 @@
         </div>
     </div>
 </div>
+<script src="../js/app_product.js"></script> 
