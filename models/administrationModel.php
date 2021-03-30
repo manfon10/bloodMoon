@@ -125,6 +125,20 @@
                     echo "Revise el siguiente error " . $e->getMessage();
                 }
         }
+
+        public function getCategory(){
+            $sql = "SELECT * FROM categoria";
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->execute();
+                        while($row = $query->fetch()){
+                            $this->categoria[] = $row;
+                        }
+                    return $this->categoria;
+                }catch (PDOExeption $e) {
+                    echo "Revise el siguiente error " . $e->getMessage();
+                }
+        }
     }
 
 ?>
