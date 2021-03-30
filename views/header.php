@@ -35,8 +35,8 @@
             <li><a href="index.php">Central</a></li>
             <li><a>Inventario</a>
                 <ul>
-                    <li><a href="index.php?menu=product">Productos</a></li>
-                    <li><a href="index.php?menu=suppliers">Proveedores</a></li>
+                    <li><a href="index.php?menu=product"><i class="fas fa-tshirt"></i> Productos</a></li>
+                    <li><a href="index.php?menu=suppliers"><i class="fas fa-dolly"></i> Proveedores</a></li>
                 </ul>
             </li>
             <li><a href="index.php?menu=administration">Administración</a></li>
