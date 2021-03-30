@@ -1,15 +1,22 @@
 <?php
 
-require_once("../models/administrationModel.php");
+    require_once("../models/administrationModel.php");
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    if($_POST['data'] == 'view_user'){
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $modelo = new administrationModel();
-        $data = $modelo->getUser();
-        include_once('../views/administration/view_user.php');
-    }else if($_POST['data'] == 'test'){
-        include_once('../views/administration/test.php');
+        if($_POST['data'] == 'view_user'){
+            $data = $modelo->getUser();
+            include_once('../views/administration/view_user.php');
+        }else if($_POST['data'] == 'view_category'){
+            $data = $modelo->getCategory();
+            if($data != []) {
+                include_once('../views/administration/view_category.php');
+            }else {
+                $error = "No hay Datos Disponibles.";
+                include_once('../views/administration/view_category.php');
+            }
+            
+        }
     }
-}
 
 ?>
