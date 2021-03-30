@@ -31,15 +31,17 @@
                                     $userSession->setCurrentUser($data->userName);
 
                                     $this->userModel->setUser($data);
+
                                     $_SESSION['idUser']   = $this->userModel->getId();
                                     $_SESSION['names']    = $this->userModel->getNames();
                                     $_SESSION['surnames'] = $this->userModel->getSurNames();
+                                    $_SESSION['rol_user'] = $this->userModel->getRol();
                                     $_SESSION['access'] = 1 ;
 
                                     $date = date("Y-m-d H:i:s");
                                     $this->userModel->updateLogin($date, $data);
 
-                                    header('Location: /inventory/views/index.php');
+                                    header('Location: /bloodMoon/views/index.php');
                                 }else {
                                     $error = "Usuario o Contraseña Erroneos.";
                                     require_once("views/login/login.php");
