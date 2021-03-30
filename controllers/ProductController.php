@@ -15,8 +15,14 @@
 
         public function index(){
             $data = $this->modelProduct->getProducts();
-            require_once("../views/header.php");
-            require_once("../views/product/product.php");
+                if($data != []){
+                    require_once("../views/header.php");
+                    require_once("../views/product/product.php");
+                }else {
+                    $error = "No hay productos disponibles.";
+                    require_once("../views/header.php");
+                    require_once("../views/product/product.php");
+                }
         }
 
         public function create(){
