@@ -394,16 +394,19 @@ ul.menu li:hover {
 .buttonEdit {
     background-color: #89fc70;
     color: black;
+    border-radius: 5px;
 }
 
 .buttonDelete {
     background-color:#fc7970 ;
     color:black;
+    border-radius: 5px;
 }
 
 .buttonSave {
     background-color:  #fec95c;
     color: #8f5a0a;
+    border-radius: 5px;
 }
 
 /*---------------------Alertas------------------------------*/
@@ -682,7 +685,7 @@ ul.menu li:hover {
 }
 
 .tdUser > input {
-    width: 90%;
+    width: 100%;
     text-align: center;
     padding: 5px;
     margin: 5px;
@@ -691,12 +694,55 @@ ul.menu li:hover {
 }
 
 .tdUser > select {
-    width: 95%;
+    width: 100%;
     text-align: center;
     padding: 5px;
     margin: 5px;
     box-shadow: 0px 1px 2px 1px #d2d2d2;
     border-radius: 6px;
+}
+
+/*------------------view_category.php-----------------------*/
+
+.containerCategory {
+    width: 100%;
+    margin: 30px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+}
+
+.subContainerCategory {
+    margin: 8px;
+}
+
+.subContainerCategory p {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.subContainerCategory h4 {
+    padding: 10px;
+}
+
+.categoryInfo {
+    display: inline;
+    justify-content: center;
+    margin: 5px;
+    width: 100%;
+}
+
+.categoryInfo > input {
+    width: 94%;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-radius: 6px;
+}
+
+.buttonCategory {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
 }
 
 /*-----------------apartado proveedores----------------*/
