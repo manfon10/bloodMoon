@@ -25,7 +25,7 @@
                                         <td><?php echo $dato['id_usuario']; ?></td>
                                         <td><?php echo $dato['nombre_usuario']; ?></td>
                                         <td><?php echo $dato['estado']; ?></td>
-                                        <td><?php echo $dato['ultimo_acceso']; ?></td>
+                                        <td><?php if($dato['ultimo_acceso'] != ""){ echo $dato['ultimo_acceso'];} else {echo "No Tiene Registro";} ?></td>
                                         <td><?php echo $dato['nombre_rol']; ?></td>
                                         <td>
                                             <?php if($dato['imagen'] != "") { ?>
