@@ -31,7 +31,6 @@
         }
 
         public function getUserId($idUser){
-            $user = array();
             $sql = "SELECT id_usuario, estado_usuario.estado, nombre_usuario, numero_documento, email, ultimo_acceso, roles.nombre_rol, nombres, apellidos, imagen, ruta_imagen, fecha_creacion, tipo_documento.tipo_documento 
                         FROM usuario
                     INNER JOIN estado_usuario ON usuario.id_estado = estado_usuario.id_estado
@@ -127,14 +126,39 @@
         }
 
         public function getCategory(){
+            $categoria = array();
             $sql = "SELECT * FROM categoria";
                 try {
                     $query = $this->db->prepare($sql);
                     $query->execute();
-                        while($row = $query->fetch()){
-                            $this->categoria[] = $row;
+                        foreach($query->fetchAll() as $data){
+                            $categoria[] = $data;
                         }
-                    return $this->categoria;
+                }catch (PDOExeption $e) {
+                    echo "Revise el siguiente error " . $e->getMessage();
+                }
+            return $categoria;
+        }
+
+        public function addCategory($data){
+            $sql = "INSERT INTO categoria (categoria) VALUES (?)";
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->execute(array(
+                        $data['category']
+                    ));  
+                    Database::disconnect();
+                }catch (PDOExeption $e) {
+                    echo "Revise el siguiente error " . $e->getMessage();
+                }
+        }
+
+        public function deleteCategory($data){
+            $sql = "DELETE FROM categoria WHERE id_categoria = ? ";
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->execute(array($data));  
+                    Database::disconnect();
                 }catch (PDOExeption $e) {
                     echo "Revise el siguiente error " . $e->getMessage();
                 }
