@@ -1,13 +1,16 @@
 <?php
 
     require_once("../models/administrationModel.php");
-
+    require_once("../config/security.php");
+    
     class AdministrationController {
 
         private $modelAdministration;
+        private $security;
 
             public function __construct(){
                 $this->modelAdministration = new administrationModel();
+                $this->security = new Security();
             }
 
         public function index(){
@@ -23,42 +26,43 @@
             include_once('../views/administration/add_user.php');
         }
 
-        public function save(){
-            $data['names']          = $_POST['names']; 
-            $data['surnames']       = $_POST['surnames'];            
-            $data['typeDocument']   = $_POST['typeDocument'];
-            $data['documet']        = $_POST['document'];
-            $data['username']       = $_POST['username'];
-            $data['pass']           = md5($_POST['password']);
-            $data['email']          = $_POST['email'];
-            $data['status']         = $_POST['status'];
-            $data['rol']            = $_POST['rol'];
-            $data['imageUser']      = $_FILES['image']['name'];
-            $data['dateAdd']        = date("Y-m-d H:i:s");
-
-            $archiveImg = $_FILES['image']['name'];
-
-            if(isset($archiveImg) && $archiveImg != "" ){
-                $type = $_FILES['image']['type'];
-                $size = $_FILES['image']['size'];
-                $temp = $_FILES['image']['tmp_name'];
-                    if(!((strpos($type, "jpeg") || strpos($type, "jpg") || strpos($type, "png") && ($size < 2000000)))){
-                        $error = "El archivo o imagen " . $type . " esta erronea, vuelva a subirlo, gracias. ";
-                        header("Location: index.php?menu=administration&action=create");
-                    }else {
-                        if(move_uploaded_file($temp, '../uploads/_pictureUsers/' . $archiveImg)){
-                            chmod('../uploads/_pictureUsers/' . $archiveImg, 0777);
-                        }else {
-                            $error = "Ocurrio un error al subir la imagen, por favor intente de nuevo.";
-                            header("Location: index.php?menu=administration&action=create");
-                        }
-                    }
-            }
-
-            $routeImage    = 'uploads/_pictureUsers/' . $archiveImg;
-            $data['route'] = $routeImage;
-
+        public function save(){   
+            
             if(isset($_POST['addUser'])){
+                $data['names']          = $_POST['names'];
+                $data['surnames']       = $_POST['surnames'];
+                $data['typeDocument']   = $_POST['typeDocument'];
+                $data['documet']        = $_POST['document'];
+                $data['username']       = $_POST['username'];
+                $data['pass']           = md5($_POST['password']);
+                $data['email']          = $_POST['email'];
+                $data['status']         = $_POST['status'];
+                $data['rol']            = $_POST['rol'];
+                $data['imageUser']      = $_FILES['image']['name'];
+                $data['dateAdd']        = date("Y-m-d H:i:s");
+    
+                $archiveImg = $_FILES['image']['name'];
+    
+                if(isset($archiveImg) && $archiveImg != "" ){
+                    $type = $_FILES['image']['type'];
+                    $size = $_FILES['image']['size'];
+                    $temp = $_FILES['image']['tmp_name'];
+                        if(!((strpos($type, "jpeg") || strpos($type, "jpg") || strpos($type, "png") && ($size < 2000000)))){
+                            $error = "El archivo o imagen " . $type . " esta erronea, vuelva a subirlo, gracias. ";
+                            header("Location: index.php?menu=administration&action=create");
+                        }else {
+                            if(move_uploaded_file($temp, '../uploads/_pictureUsers/' . $archiveImg)){
+                                chmod('../uploads/_pictureUsers/' . $archiveImg, 0777);
+                            }else {
+                                $error = "Ocurrio un error al subir la imagen, por favor intente de nuevo.";
+                                header("Location: index.php?menu=administration&action=create");
+                            }
+                        }
+                }
+
+                $routeImage    = 'uploads/_pictureUsers/' . $archiveImg;
+                $data['route'] = $routeImage;
+
                 $this->modelAdministration->addUser($data);
                 header("Location: index.php?menu=administration");
             }
@@ -69,6 +73,18 @@
                 $this->modelProduct->updateProduct($data, $idProduct);
                 header("Location: index.php?menu=product");
             } 
+            
+            if(isset($_POST['addCategory'])) {
+                $data['category'] = trim(ucfirst($_POST['category']));
+                if(empty($data['category'])){
+                    $error = 'Los datos estan vacios, intente ingresando una categoria.';
+                    require_once("../views/header.php");
+                    include_once("../views/administration/administration.php");
+                }else {
+                    $this->modelAdministration->addCategory($data);
+                    header("Location: index.php?menu=administration");
+                }
+            }     
         }
 
         public function edit(){
@@ -89,8 +105,13 @@
                 $data = $this->modelAdministration->deleteUser($id_user);
                 header("Location: index.php?menu=administration");
             }
-        }
 
+            $id_category = $_GET['idCategory'];
+            if(isset($_GET['idCategory'])){
+                $data = $this->modelAdministration->deleteCategory($id_category);
+                header("Location: index.php?menu=administration");
+            }
+        }
     }
 
 
