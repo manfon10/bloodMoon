@@ -2,12 +2,12 @@
     <div class="containerCategory">
         <div class="subContainerCategory">
             <h4><i class="fas fa-caret-right"></i> Agregar Categoria</h4>
-                <form action="" method="POST">
+                <form action="index.php?menu=administration&action=save" method="POST">
                     <p>Nombre Categoria</p>
                     <div class="categoryInfo">
                         <input type="text" name="category" placeholder="Nombre de la Categoria">
                             <div class="buttonCategory">
-                                <a href="index.php?menu=administration&action=saveCategory"><button class="buttonSave"><i class="fa fa-plus"></i> Guardar</button></a>
+                                <button type="submit" class="buttonSave" name="addCategory"><i class="fa fa-plus"></i> Guardar</button>
                             </div>
                     </div>
                 </form>
@@ -22,14 +22,14 @@
                         <th>Nombre Categoria</th>
                         <th>Accion</th>
                     </thead>
-                    <tbody class="tableBody">
+                    <tbody class="tableBody"> 
                         <?php if($data != []) :?>
                             <?php foreach($data as $dato) : ?>
                                 <tr>
                                     <td><?php echo $dato['id_categoria']; ?></td>
-                                    <td><?php echo $dato['categoria']; ?></td>
+                                    <td><?php echo $dato['categoria']; ?></td> 
                                     <td>
-                                        <a href="index.php?menu=administration?action=deleteCategory&idCategory=<?php echo $dato['id_categoria'];?>" style="color:red;"><i class="fa fa-trash-alt"></i></a>
+                                        <a href="index.php?menu=administration&action=delete&idCategory=<?php echo $dato['id_categoria'];?>" style="color:red;"><i class="fa fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
