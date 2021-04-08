@@ -1,7 +1,5 @@
 <?php
 
-    session_start();
-
     include_once("../config/security.php");
 
 ?>
@@ -13,8 +11,6 @@
     <link rel="stylesheet" href="../css/menu.css">
     <link rel="stylesheet" type="text/css" href="../lib/font-awesome/css/all.min.css?v=9.4.4" media="all">
     <script src="../lib/jQuery/jquery-3.5.1.js"></script>
-    <link rel="stylesheet" type="text/css" href="../lib/DataTables/datatables.min.css">
-    <link rel="stylesheet" type="text/css" href="../lib/DataTables/DataTables-1.10.23/css/dataTables.bootstrap4.min.css">
     <title>BLOOD - <?php echo !$_GET['menu'] != '' ? 'Central' : ucwords($_GET['menu']) ; ?></title>
 </head>
 <body>
