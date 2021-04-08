@@ -1,7 +1,7 @@
 
 <div class="containerFormsAdministration">
     <div class="divFormAdministration">
-        <a href="index.php?menu=administration&action=create"><button class="buttonSave"><i class="fa fa-plus"></i> Agregar</button></a>
+        <a href="index.php?menu=administration&action=create"><button class="buttonSave" name="addUser"><i class="fa fa-plus"></i> Agregar</button></a>
             <form action="index.php?menu=administration&action=edit" method="POST">
                 <button name="editUser" class="buttonEdit" style="float:left;"><i class="fa fa-edit"></i> Editar</button>
                     <table id="table_users" class="tableProducts" style="width:98%;">
