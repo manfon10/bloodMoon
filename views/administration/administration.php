@@ -18,7 +18,9 @@
             </div>
         </div>
     </div>
-    <div id="gifResultado" class="text-align:center;"></div>
+    <div id="gifResultado" class="text-align:center;">
+        <?php if(isset($error)){ echo "<p style='color:red;'> $error </p>";} ?>
+    </div>
     <div id="divView"></div>
 </div>
 <script src="../js/app_administration.js"></script> 
