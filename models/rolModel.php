@@ -20,7 +20,22 @@
                 }
         }
 
+        public function getPermissionsByRol(){
+            $permissions = array();
+            $sql = "SELECT RP.id_permiso, R.nombre_rol, GROUP_CONCAT(P.permisos SEPARATOR ' - ') AS Permisos FROM roles_permisos AS RP 
+                        INNER JOIN roles AS R ON RP.id_rol = R.id_rol
+                        INNER JOIN permisos AS P ON RP.id_permiso = P.id_permiso
+                    GROUP BY R.nombre_rol";
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->execute();
+                        while($row = $query->fetch()){
+                            $this->permissions[] = $row;
+                        }
+                    return $this->permissions;
+                }catch (PDOExeption $e) {
+                    echo "Revise el siguiente error " . $e->getMessage();
+                }
+        }
     }
-
-
 ?>
