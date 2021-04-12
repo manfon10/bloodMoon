@@ -24,7 +24,7 @@
                 if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $this->rolController->validatePermissions($_SESSION['rol_user'], $_GET['action'], $_GET['menu']);
                 }else if($_SERVER['REQUEST_METHOD'] == 'GET') {
-                    $this->rolController->validatePermissions($_SESSION['rol_user'], $_GET['action'], $_POST['menu']);
+                    $this->rolController->validatePermissions($_SESSION['rol_user'], $_GET['action'], $_GET['menu']);
                 }
             }
             
