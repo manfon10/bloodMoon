@@ -1,5 +1,5 @@
 <div class="containerFormsAdministration">
-    <table class="tableProducts" style="width:70%;">
+    <table class="tableProducts" style="width:98%;">
         <thead class="tableHead">
             <tr>
                 <th>Nombre Rol</th>
