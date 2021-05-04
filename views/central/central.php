@@ -47,18 +47,21 @@
             zoomType: 'x'
         },
         colors: ['#1b2f62', '#cc3c1a'],
+
         title: {
             text: 'Ventas Por Mes'
         },
+
         xAxis: {
             categories: [
                 <?php 
-                    foreach ($graph as $series) {
+                    foreach ($salesMonth as $series) {
                         echo " ' " . $series['Mes'] . " ' " . ',';
                     } 
                 ?>
             ],     
         },
+
         yAxis: {
             title: {
                 text: 'Total de Ventas'
@@ -69,7 +72,7 @@
             name: 'Ventas',
                 data: [
                     <?php 
-                        foreach ($graph as $series) {
+                        foreach ($salesMonth as $series) {
                             echo $series['TotalVentasMes'] . ',';
                         } 
                     ?>
@@ -81,10 +84,11 @@
 <script type="text/javascript">
     $('#container2').highcharts({
         chart: {
-            type: 'column'
+            type: 'column',
+            zoomType: 'x'
         },
 
-        colors: ['#52be80', '#f1c40f',  '#ec7063'],
+        colors: ['#52be80', '#ec7063', '#f1c40f'],
 
         title: {
             text: 'Estado por Ventas'
@@ -92,21 +96,29 @@
 
         xAxis: {
             categories: [
-                'Aprovado',
-                'Pendiente',
-                'Denegado'
+                <?php 
+                    foreach($statusSales as $series){
+                        echo " ' " . $series['Estado'] . " ' " . ',';
+                    }    
+                ?>
             ],     
         },
+
+        yAxis: {
+            title: {
+                text: 'Total de Ventas'
+            }
+        },
     
-        series: [{
-            name: 'Aprovado',
-                data: [4]
-        }, {
-            name: 'Pendiente',
-                data: [2]
-        }, {
-            name: 'Denegado',
-                data: [8]
-        }]
+        series: [
+            <?php foreach($statusSales as $series) : ?>
+                <?php echo " { "; ?> 
+                    name: <?php echo " ' " . $series['Estado'] . " ' " .  ','; ?> 
+                    data: [
+                        <?php echo $series['TotalEstados'] . ','; ?>
+                    ],
+                <?php echo " }, "; ?>
+            <?php endforeach; ?>
+        ]
     });
 </script>
