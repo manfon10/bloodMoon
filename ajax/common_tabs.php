@@ -18,14 +18,21 @@
             }
         }else if($_POST['data'] == 'view_roles') {
             $rol_model = new RolModel();
-            $rolesArray = $rol_model->getPermissionsByRol();
-            $data = $rolesArray;
+            $data = $rol_model->getPermissionsByRol();
                 if($data != []) {
                     include_once('../views/administration/view_rol.php');
                 }else {
                     $error = "No hay Datos Disponibles.";
                     include_once('../views/administration/view_rol.php');
                 }
+        }else if($_POST['data'] == 'view_sales') {
+            $data = $admin_model->getSales();
+            if($data != []) {
+                include_once('../views/administration/view_sales.php');
+            }else {
+                $error = "No hay Ventas en el sistema.";
+                include_once('../views/administration/view_sales.php');
+            }
         }
     }
 
