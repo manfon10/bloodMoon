@@ -24,4 +24,14 @@
         <input type="file" name="image" id="">
         <a href="index.php?menu=administration&action=save"><button type="submit" name="addUser" class="buttonSave"><i class="fa fa-plus"></i> Guardar</button></a>
     </form>
+    <?php if(isset($errores)){
+            foreach($errores as $error){
+                echo "
+                    <ul>
+                        <li> $error </li>
+                    </ul>
+                ";
+            }
+        } 
+    ?> 
 </div>

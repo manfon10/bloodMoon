@@ -11,17 +11,18 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th colspan="7"><h3>Edición Usuario - <?php echo $dato['nombre_usuario']; ?></h3></th>
+                                        <th colspan="9"><h3>Edición Usuario - <?php echo $dato['nombre_usuario']; ?></h3></th>
                                     </tr>  
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td class="border_info">
                                             <?php if($dato['imagen'] != "") { ?>
-                                                <img src="../uploads/_pictureUsers/<?php echo $dato['imagen']; ?>" alt="" style="width:100px;">
+                                                <img src="../uploads/_pictureUsers/<?php echo $dato['imagen']; ?>" alt="" style="width:105px;">
                                             <?php } else { ?>
                                                 <img src="../img/img_user_default.png" alt="" style="width:100px;">
                                             <?php } ?>
+                                            <button style="font-size:11px;"><i class="fa fa-image"></i> Subir Imagen</button>
                                         </td>
                                         <td class="border_info" style="width:85%;">
                                             <p><strong>Rol: </strong><?php echo $dato['nombre_rol']; ?></p>
@@ -41,7 +42,7 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th colspan="7"><h3>Datos Usuario</h3></th>
+                                        <th colspan="9"><h3>Datos Usuario</h3></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,21 +70,12 @@
                                             </select>
                                         </td>
                                         <td class="tdUser">
-                                            <p>Numero de Documento</p>
+                                            <p>Numero Documento</p>
                                             <input type="number" name="" value="<?php echo $dato['numero_documento']; ?>">
                                         </td>
                                         <td class="tdUser">
                                             <p>Fecha Creación</p>
                                             <input type="text" value="<?php echo $dato['fecha_creacion']; ?>" disabled>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tdUser">
-                                            <input type="hidden" name="image" value="<?php echo $dato['imagen']; ?>">
-                                            <input type="file" name="image" >
-                                        </td>
-                                        <td class="tdUser">
-                                            <select name="" id=""></select>
                                         </td>
                                     </tr>
                                 </tbody>
