@@ -36,7 +36,7 @@
                     INNER JOIN estado_usuario ON usuario.id_estado = estado_usuario.id_estado
                     INNER JOIN roles ON usuario.id_rol = roles.id_rol
                     INNER JOIN tipo_documento ON usuario.id_tipo_documento = tipo_documento.id_tipo_documento
-                        WHERE id_usuario = ?;";
+                        WHERE id_usuario = ?";
                 try {
                     $query = $this->db->prepare($sql);
                     $query->bindParam(1, $idUser);
@@ -159,6 +159,24 @@
                     $query = $this->db->prepare($sql);
                     $query->execute(array($data));  
                     Database::disconnect();
+                }catch (PDOExeption $e) {
+                    echo "Revise el siguiente error " . $e->getMessage();
+                }
+        }
+
+        public function getSales() {
+            $sql = "SELECT id_detalle_ventas, EC.estado, CONCAT(C.nombres, ' ' , C.apellidos) AS Nombre_Cliente, V.fecha_compra, P.item, P.nombre_producto, cantidad, P.precio, P.precio * cantidad AS Total
+                        FROM detalle_ventas AS DV
+                            INNER JOIN ventas AS V ON DV.id_ventas = V.id_ventas
+                            INNER JOIN cliente AS C ON V.id_cliente = C.id_cliente
+                            INNER JOIN estado_compra AS EC ON DV.id_estado_compra = EC.id_estado_compra
+                            INNER JOIN producto AS P ON DV.id_producto = P.id_producto
+                    ORDER BY fecha_compra ASC";
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->execute();
+                    $data = $query->fetchAll();
+                return $data;
                 }catch (PDOExeption $e) {
                     echo "Revise el siguiente error " . $e->getMessage();
                 }
