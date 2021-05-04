@@ -22,7 +22,7 @@
             <ul>
                 <li><a href="user/logout.php" class="fa fa-sign-out-alt" title="Cerrar Sesion"></a></li>
                 <li><a href="index.php?menu=preferences" class="fa fa-cog" title="Preferencias de Usuario"></a></li>
-                <li><p><?php echo $_SESSION['user'];  ?></p></li>
+                <li><p style="color:white; font-size:15px;"><?php echo $_SESSION['user'];  ?></p></li>
             </ul>
         </div>
     </div>
