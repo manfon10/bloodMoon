@@ -12,7 +12,8 @@
 
         public function index(){
             $data = $this->modelCentral->lastProductsAdd();
-            $graph = $this->modelCentral->getSalesPerMonth();
+            $salesMonth = $this->modelCentral->getSalesPerMonth();
+            $statusSales = $this->modelCentral->getStatusSales();
             require_once("../views/header.php");
             include_once('../views/central/central.php');
         }
