@@ -1,124 +1,97 @@
 <div class="containerFormsAdministration">
-    <div class="containerSearch">
-        <div class="searchBar">
-            <div class="buttonsSearch">
-                <p>Filtrar por: </p>
-                <button id="searchDate" onclick="showDate('resultDate')">
-                    <div class="divImg">
-                        <i class="fa fa-calendar-plus"></i>
-                    </div> 
-                    Fecha
-                </button>
-                <button id="searchItem" onclick="showDate('resultItem')">
-                    <div class="divImg">
-                        <i class="fa fa-external-link-square-alt"></i>
-                    </div>
-                    Item
-                </button>
-                <button id="searchPatron" onclick="showDate('resultPatron')">
-                    <div class="divImg">
-                        <i class="fa fa-network-wired"></i>
-                    </div>
-                    Patron
-                </button>
+    <div class="containerSearchSales">
+        <div class="searchBarSales">
+            <div class="filterSales">
+                <label>Opciones de Filtrado: </label>
+                <select name="option" onChange="optionSelect(this.value)">
+                    <option started>--------</option>
+                    <option value="codigo">Codigo</option>
+                    <option value="estado">Estado</option>
+                    <option value="itemm">Item</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="fecha">Fecha</option>
+                </select>
             </div>
-            <div class="resultSearchForm">
-                <div id="resultDate" style="display: none;">
-                    <form action="index.php?menu=product&action=search" method="POST">
-                        <div clas="optionSearch">
-                            <label for="">Fecha Uno</label>
-                            <input type="date" name="searchDateOne" class="optionSearch">
-                            <label for="">Fecha Dos</label>
-                            <input type="date" name="searchDateTwo" class="optionSearch">
-                                <div class="buttonsSearch">
-                                    <button style="background-color: #fec95c; color: #8f5a0a;" type="submit" name="searchDate">
-                                        <div class="divImg">
-                                            <i class="fa fa-search"></i>
-                                        </div>
-                                        Buscar
-                                    </button>
-                                </div>
-                        </div>
-                    </form>
-                </div>
-                <div id="resultItem" style="display: none;">
-                    <form action="index.php?menu=product&action=search" method="POST" autocomplete="off">
-                        <div clas="optionSearch">
-                            <label for="">Numero de Item</label>
-                            <input type="number" name="itemProduct" class="optionSearch">
-                                <div class="buttonsSearch">
-                                    <button style="background-color: #fec95c; color: #8f5a0a;" type="submit" name="searchItem">
-                                        <div class="divImg">
-                                            <i class="fa fa-search"></i>
-                                        </div>
-                                        Buscar
-                                    </button>
-                                </div>
-                        </div>
-                    </form>
-                </div>
-                <div id="resultPatron" style="display: none;">
-                    <form action="index.php?menu=product&action=search" method="POST" autocomplete="off">
-                        <div clas="optionSearch">
-                            <label for="">Patron: </label>
-                            <select name="patron" class="optionSearch" required>
-                                <option started>-----------</option>
-                                <option value="nombre_producto">Nombre</option>
-                                <option value="precio">Precio</option>
-                                <option value="stock">Stock</option>
-                            </select>
-                            <label for="">Patron a Buscar: </label>
-                            <input type="text" name="valorPatron" class="optionSearch" required>
-                            <div class="buttonsSearch">
-                                <button style="background-color: #fec95c; color: #8f5a0a;" type="submit" name="searchPatron">
-                                    <div class="divImg">
-                                        <i class="fa fa-search"></i>
-                                    </div>
-                                    Buscar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <div id="codigo" style="display:none;">
+                <form class="filterSales" id="code" action="javascript:getFilterSales('code', 'buttonCode')">
+                    <input type="text" name="code" placeholder="Numero de Codigo">
+                    <button class="buttonSave" id="buttonCode">Filtrar</button>
+                </form>
             </div>
+            <div id="estado" style="display:none;">
+                <form class="filterSales" id="status" action="javascript:getFilterSales('status', 'buttonStatus')">
+                    <select name="id_estus">
+                        <option started>--------</option>
+                        <?php foreach($state as $dato) : ?>
+                            <option value="<?php echo $dato['id_estado_compra']; ?>"> <?php echo $dato['estado']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <button class="buttonSave" id="buttonStatus">Filtrar</button>
+                </form>
+            </div>
+            <div id="itemm" style="display:none;">
+                <form class="filterSales" id="item" action="javascript:getFilterSales('item', 'buttonItem')">
+                    <input type="text" name="item" placeholder="Numero de Item">
+                    <button class="buttonSave" id="buttonItem">Filtrar</button>
+                </form>
+            </div>
+            <div id="cliente" style="display:none;">
+                <form class="filterSales" id="client" action="javascript:getFilterSales('client', 'buttonClient')">
+                    <input type="text" name="client" placeholder="Nombre del Cliente">
+                    <button class="buttonSave" id="buttonClient">Filtrar</button>
+                </form>
+            </div>
+            <div id="fecha" style="display:none;">
+                <form class="filterSales" id="dates" action="javascript:getFilterSales('dates', 'buttonDates')">
+                    <input type="date" name="dateOne">
+                    <label> a </label>
+                    <input type="date" name="dateTwo">
+                    <button class="buttonSave" id="buttonDates">Filtrar</button>
+                </form>
+            </div>
+            <div id="gitResultSales"></div>
         </div>
     </div>
-    <table class="tableProducts" style="width:98%;">
-        <thead class="tableHead">
-            <tr>
-                <th>Codigo</th>
-                <th>Estado Compra</th>
-                <th>Nombres Cliente</th>
-                <th>Fecha Compra</th>
-                <th>Item Producto</th>
-                <th>Nombre Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Precio Total</th>
-            </tr>
-        </thead>
-        <tbody class="tableBody">
-            <?php if($data != []) :?>
-                <?php foreach($data as $dato) :?>
+    <div class="containerTableSales">
+        <div id="divResulSalesFilter">
+            <table class="tableProducts" style="width:98%;">
+                <thead class="tableHead">
                     <tr>
-                        <td><?php echo $dato['id_detalle_ventas']; ?></td>
-                            <?php if($dato['estado'] == 'Aprovado') { ?>
-                                <td><p style="background:#52be80; color:black; width:60%;"><?php echo $dato['estado']; ?></p></td>
-                            <?php }else if($dato['estado'] == 'Pendiente') { ?>
-                                <td><p style="background:#f1c40f; color:black; width:60%;"><?php echo $dato['estado']; ?></p></td>
-                            <?php }else if($dato['estado'] == 'Denegada') { ?>
-                                <td><p style="background:#ec7063; color:black; width:60%;"><?php echo $dato['estado']; ?></p></td>
-                            <?php } ?>
-                        <td><?php echo $dato['Nombre_Cliente']; ?></td>
-                        <td><?php echo $dato['fecha_compra']; ?></td>
-                        <td><?php echo $dato['item']; ?></td>
-                        <td><?php echo $dato['nombre_producto']; ?></td>
-                        <td><?php echo $dato['cantidad']; ?></td>
-                        <td><?php echo $dato['precio']; ?></td>
-                        <td><?php echo $dato['Total']; ?></td>
+                        <th>Codigo</th>
+                        <th>Estado Compra</th>
+                        <th>Nombres Cliente</th>
+                        <th>Fecha Compra</th>
+                        <th>Item Producto</th>
+                        <th>Nombre Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Total</th>
                     </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </tbody>
-    </table>
+                </thead>
+                <tbody class="tableBody">
+                    <?php if($data != []) :?>
+                        <?php foreach($data as $dato) :?>
+                            <tr>
+                                <td><?php echo $dato['id_detalle_ventas']; ?></td>
+                                    <?php if($dato['estado'] == 'Aprovado') { ?>
+                                        <td><p style="background:#52be80; color:black; width:60%;"><?php echo $dato['estado']; ?></p></td>
+                                    <?php }else if($dato['estado'] == 'Pendiente') { ?>
+                                        <td><p style="background:#f1c40f; color:black; width:60%;"><?php echo $dato['estado']; ?></p></td>
+                                    <?php }else if($dato['estado'] == 'Denegada') { ?>
+                                        <td><p style="background:#ec7063; color:black; width:60%;"><?php echo $dato['estado']; ?></p></td>
+                                    <?php } ?>
+                                <td><?php echo $dato['Nombre_Cliente']; ?></td>
+                                <td><?php echo $dato['fecha_compra']; ?></td>
+                                <td><?php echo $dato['item']; ?></td>
+                                <td><?php echo $dato['nombre_producto']; ?></td>
+                                <td><?php echo $dato['cantidad']; ?></td>
+                                <td><?php echo $dato['precio']; ?></td>
+                                <td><?php echo $dato['Total']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
