@@ -27,6 +27,7 @@
                 }
         }else if($_POST['data'] == 'view_sales') {
             $data = $admin_model->getSales();
+            $state = $admin_model->getEstateSales();
             if($data != []) {
                 include_once('../views/administration/view_sales.php');
             }else {
