@@ -140,6 +140,21 @@
             return $categoria;
         }
 
+        public function getEstateSales(){
+            $estado = array();
+            $sql = "SELECT * FROM estado_compra";
+                try {
+                    $query = $this->db->prepare($sql);
+                    $query->execute();
+                        foreach($query->fetchAll() as $data){
+                            $estado[] = $data;
+                        }
+                }catch (PDOExeption $e) {
+                    echo "Revise el siguiente error " . $e->getMessage();
+                }
+            return $estado;
+        }
+
         public function addCategory($data){
             $sql = "INSERT INTO categoria (categoria) VALUES (?)";
                 try {
@@ -180,6 +195,73 @@
                 }catch (PDOExeption $e) {
                     echo "Revise el siguiente error " . $e->getMessage();
                 }
+        }
+
+        public function getFilter($dato) {
+            if(isset($dato['code'])) {
+                $sql = "SELECT id_detalle_ventas, EC.estado, CONCAT(C.nombres, ' ' , C.apellidos) AS Nombre_Cliente, V.fecha_compra, P.item, P.nombre_producto, cantidad, P.precio, P.precio * cantidad AS Total
+                            FROM detalle_ventas AS DV
+                                INNER JOIN ventas AS V ON DV.id_ventas = V.id_ventas
+                                INNER JOIN cliente AS C ON V.id_cliente = C.id_cliente
+                                INNER JOIN estado_compra AS EC ON DV.id_estado_compra = EC.id_estado_compra
+                                INNER JOIN producto AS P ON DV.id_producto = P.id_producto
+                            WHERE id_detalle_ventas = :codigo ORDER BY fecha_compra ASC";
+                        $query = $this->db->prepare($sql);
+                        $query->execute(array("codigo" => $dato['code']));
+                        $data = $query->fetchAll();
+                    return $data;
+            }else if(isset($dato['status'])) {
+                $sql = "SELECT id_detalle_ventas, EC.id_estado_compra, EC.estado, CONCAT(C.nombres, ' ' , C.apellidos) AS Nombre_Cliente, V.fecha_compra, P.item, P.nombre_producto, cantidad, P.precio, P.precio * cantidad AS Total
+                            FROM detalle_ventas AS DV
+                                INNER JOIN ventas AS V ON DV.id_ventas = V.id_ventas
+                                INNER JOIN cliente AS C ON V.id_cliente = C.id_cliente
+                                INNER JOIN estado_compra AS EC ON DV.id_estado_compra = EC.id_estado_compra
+                                INNER JOIN producto AS P ON DV.id_producto = P.id_producto
+                            WHERE EC.id_estado_compra = :estado ORDER BY fecha_compra ASC";
+                        $query = $this->db->prepare($sql);
+                        $query->execute(array("estado" => $dato['status']));
+                        $data = $query->fetchAll();
+                    return $data;
+            }else if(isset($dato['item'])) {
+                $sql = "SELECT id_detalle_ventas, EC.estado, CONCAT(C.nombres, ' ' , C.apellidos) AS Nombre_Cliente, V.fecha_compra, P.item, P.nombre_producto, cantidad, P.precio, P.precio * cantidad AS Total
+                            FROM detalle_ventas AS DV
+                                INNER JOIN ventas AS V ON DV.id_ventas = V.id_ventas
+                                INNER JOIN cliente AS C ON V.id_cliente = C.id_cliente
+                                INNER JOIN estado_compra AS EC ON DV.id_estado_compra = EC.id_estado_compra
+                                INNER JOIN producto AS P ON DV.id_producto = P.id_producto
+                            WHERE P.item LIKE '%" . $dato['item'] . "%' ORDER BY fecha_compra ASC";
+                        $query = $this->db->prepare($sql);
+                        $query->execute();
+                        $data = $query->fetchAll();
+                    return $data;
+            }else if(isset($dato['client'])) {
+                $sql = "SELECT id_detalle_ventas, EC.estado, CONCAT(C.nombres, ' ' , C.apellidos) AS Nombre_Cliente, V.fecha_compra, P.item, P.nombre_producto, cantidad, P.precio, P.precio * cantidad AS Total
+                            FROM detalle_ventas AS DV
+                                INNER JOIN ventas AS V ON DV.id_ventas = V.id_ventas
+                                INNER JOIN cliente AS C ON V.id_cliente = C.id_cliente
+                                INNER JOIN estado_compra AS EC ON DV.id_estado_compra = EC.id_estado_compra
+                                INNER JOIN producto AS P ON DV.id_producto = P.id_producto
+                            WHERE CONCAT(C.nombres, ' ' , C.apellidos) LIKE '%" . $dato['client'] . "%' ORDER BY fecha_compra ASC";
+                        $query = $this->db->prepare($sql);
+                        $query->execute();
+                        $data = $query->fetchAll();
+                    return $data;
+            }else if(isset($dato['dateOne']) && isset($dato['dateTwo'])) {
+                $sql = "SELECT id_detalle_ventas, EC.id_estado_compra, EC.estado, CONCAT(C.nombres, ' ' , C.apellidos) AS Nombre_Cliente, V.fecha_compra, P.item, P.nombre_producto, cantidad, P.precio, P.precio * cantidad AS Total
+                            FROM detalle_ventas AS DV
+                                INNER JOIN ventas AS V ON DV.id_ventas = V.id_ventas
+                                INNER JOIN cliente AS C ON V.id_cliente = C.id_cliente
+                                INNER JOIN estado_compra AS EC ON DV.id_estado_compra = EC.id_estado_compra
+                                INNER JOIN producto AS P ON DV.id_producto = P.id_producto
+                            WHERE V.fecha_compra BETWEEN :dateOne AND :dateTwo ORDER BY fecha_compra ASC";
+                        $query = $this->db->prepare($sql);
+                        $query->execute(array(
+                                            "dateOne" => $dato['dateOne'],
+                                            "dateTwo" => $dato['dateTwo'],
+                                        ));
+                        $data = $query->fetchAll();
+                    return $data;   
+            }               
         }
     }
 
