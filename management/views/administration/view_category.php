@@ -38,13 +38,13 @@
                         <?php else : ?>
                             <div class="containerFormEdit">
                                 <div class="alertWarning">
-                                        <div class="contentWarning">
-                                            <i class="fa fa-exclamation-triangle"></i> <?php if(isset($error)){
-                                                echo $error;
-                                            } ?>
-                                        </div>
+                                    <div class="contentWarning">
+                                        <i class="fa fa-exclamation-triangle"></i> <?php if(isset($error)){
+                                            echo $error;
+                                        } ?>
                                     </div>
                                 </div>
+                            </div>
                         <?php endif;?>
         </div>
     </div>
