@@ -601,10 +601,8 @@ ul.menu li:hover {
 
 .containerFormsAdministration{
     float: right;
-    display: flex;
     width: 88%;
     margin: 5px;
-    justify-content: center;
     box-shadow: 0px 1px 2px 1px #d2d2d2;
 }
 
@@ -705,7 +703,7 @@ ul.menu li:hover {
 /*------------------view_category.php-----------------------*/
 
 .containerCategory {
-    width: 100%;
+    width: auto;
     margin: 30px;
     box-shadow: 0px 1px 2px 1px #d2d2d2;
 }
@@ -744,5 +742,47 @@ ul.menu li:hover {
     justify-content: center;
     padding-top: 15px;
 }
+
+/*--------------------views_sales.php----------------------------*/
+
+.searchBarSales {
+    box-shadow: 2px 2px 2px 2px #d2d2d2;
+    display: flex;
+    margin: 12px;
+    height: 50px;
+    width: auto;
+}
+
+.filterSales > select {
+    width: auto;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-radius: 6px;
+}
+
+.filterSales > input {
+    width: auto;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0px 1px 2px 1px #d2d2d2;
+    border-radius: 6px;
+}
+
+.filterSales > label {
+    font-size: 12px;
+}
+
+.containerTableSales {
+    width: 100%;
+}
+
+#gitResultSales > img {
+    width: 50px;
+    height: 50px;
+}
+
 
 /*-----------------apartado proveedores----------------*/
